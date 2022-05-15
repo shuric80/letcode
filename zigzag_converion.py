@@ -1,3 +1,10 @@
+#! /usr/bin/env python
+
+import pytest
+from collections import defaultdict
+
+
+def convert(s: str, numRows: int) -> str:
     cnt = 0
     result = defaultdict(list)
     is_direct = True
@@ -17,5 +24,14 @@
     output = str()
     for key, value in result.items():
         output += ''.join(value)
-    print(result)
     return output
+
+
+@pytest.mark.parametrize('s, num, output', (('PAYPALISHIRING', 3, 'PAHNAPLSIIGYIR'), ('ABC', 1, 'ABC')))
+def test_convert(s, num, output):
+    assert convert(s, num) == output
+
+
+
+if __name__ == "__main__":
+    test_convert()
